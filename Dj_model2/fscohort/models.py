@@ -9,4 +9,10 @@ class Student(models.Model):
     def __str__(self):
         return f"{self.first_name}-{self.last_name}"
     
+    class Meta:
+        ordering=["number"]
+        verbose_name_plural="Student_List"
+        db_table="Student_Table"
+
+    
 
