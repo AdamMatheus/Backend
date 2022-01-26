@@ -1,0 +1,26 @@
+{% load static %}
+<img src="{% static 'app/kitten.jpg' %}" alt="my image"
+
+<h1>Hello, this is template view!</h1>
+
+{{ title | title }}
+<br>
+
+{{ dict1.django }}
+<br>
+
+{{ my_list }}
+
+{% for num in my_list %}
+    <li>{{num}}</li>
+{% endfor %}
+
+{#This is one line of  comment!#}
+
+
+{% comment %}
+    multi line comment
+    you can 
+    write here
+{% endcomment %}
+    
