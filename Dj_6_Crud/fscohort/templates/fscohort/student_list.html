@@ -1,0 +1,14 @@
+{% extends 'fscohort/base.html' %}
+
+
+{% block content %}
+    
+    {% for student  in students  %}
+
+        <li>{{student.number}}-{{student.first_name}}-{{student.last_name}}</li>
+        
+    {% endfor %}
+        
+    
+{% endblock content %}
+    
