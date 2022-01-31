@@ -13,4 +13,4 @@ class StudentForm(forms.ModelForm):
         model = Student
         fields = ["first_name", "last_name", "number", "profile_pic"]
         # exclude=['first_name']
-        labels = {"first_name": "SurName"}
+        labels = {"first_name": "Name"}
