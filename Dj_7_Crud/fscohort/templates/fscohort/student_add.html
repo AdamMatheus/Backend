@@ -1,0 +1,13 @@
+{% extends 'fscohort/base.html' %}
+
+
+{% block content %}
+
+    <form action =""
+        {{form}}
+        {% csrf_token %}
+        <input type="submit" value="Add">
+    </form>
+    
+{% endblock content %}
+    
