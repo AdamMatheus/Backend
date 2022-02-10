@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,6 +41,7 @@ INSTALLED_APPS = [
     'froala_editor',
     'home',
     'rest_framework',
+    
 ]
 
 MIDDLEWARE = [
@@ -50,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Blog.urls'
@@ -119,12 +122,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 import os
 
-STATIC_URL = 'static/'
-STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
 
-STATICFILES_DIR={
-    os.path.join(BASE_DIR,"public/static")
-}
+STATIC_ROOT=os.path.join(BASE_DIR,'staticfiles')
+STATIC_URL = 'static/'
+
+STATICFILES_DIRS=(
+    os.path.join(BASE_DIR,"public/static"),
+)
 
 MEDIA_ROOT=os.path.join(BASE_DIR,'public/static')
 MEDIA_URL='/media/'
@@ -138,3 +142,7 @@ EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
 EMAIL_HOST_USER='email'
 EMAIL_HOST_PASSWORD='password'
+
+STATICFILES_STORAGE= 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+django_heroku.settings(locals())
+

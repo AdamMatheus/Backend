@@ -61,9 +61,9 @@
                 <h6 style="font-style: italic">Comments...</h6>
 
                 {% if not blog.comments.all %}
-                  No comments yet!<a href="#">Add Comment</a>
+                  No comments yet!<a href="{% url 'add_comment' blog.pk %}"> Add Comment</a>
                   {% else %}
-                  <a href="">Add comment</a>
+                  <a href="{% url 'add_comment' blog.pk %}"> Add Comment</a>
 
                     {% for comment in blog.comments.all %} <br><hr>
                       <p style="font-size: x-small;background-color: rgb(109, 108, 108); color: #f1f1f1; ">
@@ -72,10 +72,12 @@
                       <br/>
                       {{ comment.body }} <br>
 
+
                     {% endfor %}
 
-                {% endif %}
+                    <a href="{% url 'add_comment' blog.pk %}"> Add Comment</a>
 
+                {% endif %} <br>
 
               </div>
             </div>

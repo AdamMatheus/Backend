@@ -49,11 +49,6 @@ class Like(models.Model):
  
 
 
-
-
-
-
-
 class Comment(models.Model):
     post=models.ForeignKey(BlogModel, related_name='comments', on_delete=models.CASCADE) 
     name=models.CharField(max_length=255)

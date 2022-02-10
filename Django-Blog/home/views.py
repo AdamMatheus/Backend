@@ -1,12 +1,13 @@
 from multiprocessing import context
+from sre_constants import SUCCESS
 from tkinter import E
-from django.shortcuts import render,redirect,get_object_or_404
-from django.http import HttpResponseRedirect
-from home.form import BlogForm
-from django.urls import reverse
-from .models import BlogModel,Like
-from .form import *
+from django.shortcuts import render,redirect
+from django.urls import reverse_lazy
+from home.forms import BlogForm
+from .models import BlogModel,Like, Comment
+from .forms import *
 from django.contrib.auth import logout
+from django.views.generic import CreateView
 
 
 def post_view(request):
@@ -178,4 +179,8 @@ def verify(request,token):
     return redirect('/')
 
 
-    
+class AddCommentView(CreateView):
+    model= Comment
+    form_class=CommentForm
+    template_name='add_comment.html'
+    success_url = reverse_lazy('home')

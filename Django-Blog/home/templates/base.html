@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   
@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Directory Theme by Bootstrapious</title>
+    <title>Blog Adam</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
@@ -35,8 +35,8 @@
       <nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-dark" >
         <div class="container-fluid" >
           <div class="d-flex align-items-center"><a class="navbar-brand py-1" href="/">
-          
-          <h3><img src="/public/static/blog/halogo-circle.png" alt="" class="img-fluid ">Adam Matheus <span style="font-style: italic">Blog </span></h3>
+              
+          <h3><img src="{% static 'public/static/blog/halogo_circle.png' %}" alt="" style="width: 50px; height: 50px"/><span style="color:white">Adam Matheus</span> <span style="font-style: italic">Blog </span></h3>
           </div>
           <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
           <!-- Navbar Collapse -->
