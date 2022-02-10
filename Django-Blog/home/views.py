@@ -1,13 +1,50 @@
 from multiprocessing import context
 from tkinter import E
-from django.shortcuts import render,redirect
-
+from django.shortcuts import render,redirect,get_object_or_404
+from django.http import HttpResponseRedirect
 from home.form import BlogForm
-
-# Create your views here.
-
+from django.urls import reverse
+from .models import BlogModel,Like
 from .form import *
 from django.contrib.auth import logout
+
+
+def post_view(request):
+    blogs=BlogModel.objects.all()
+    user=request.user
+    
+    context={
+        'blogs':blogs,
+        'user':user,
+    }
+    
+    return render(request,'home/home.html',context)
+
+def like_post(request):
+    user=request.user
+    if request.method=='POST':
+        post_id=request.POST.get('post_id')
+        post_blog= BlogModel.objects.get(id=post_id)
+        
+        if user in post_blog.liked.all():
+            post_blog.liked.remove(user)
+        else:
+            post_blog.liked.add(user)
+            
+        like,created=Like.objects.get_or_create(user=user,post_id=post_id)
+        
+        if not created:
+            if like.value=='Like':
+                like.value='Unlike'
+            else:
+                like.value='Like'
+        
+        like.save()
+        
+            
+    return redirect('post-list')
+
+
 
 def logout_view(request):
     logout(request)
@@ -139,3 +176,6 @@ def verify(request,token):
         print (e)
         
     return redirect('/')
+
+
+    
