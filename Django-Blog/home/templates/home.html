@@ -20,7 +20,7 @@
         <div class="row mb-5 ">
           <!-- blog item-->
           {% for blog in blogs %}
-          <div class="col-lg-4 col-sm-6 mb-4 hover-animate">
+          <div class="col-lg-4 col-md-4 mb-4 hover-animate">
             <div class="card shadow border-0 h-100">
               <a href="{% url 'blog_detail' blog.slug %}">
                 <img class="img-fluid card-img-top" src="/media/{{blog.image}}" alt="..."/></a>

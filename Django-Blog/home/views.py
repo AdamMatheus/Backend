@@ -1,8 +1,6 @@
-from multiprocessing import context
-from sre_constants import SUCCESS
 from tkinter import E
 from django.shortcuts import render,redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy,reverse
 from home.forms import BlogForm
 from .models import BlogModel,Like, Comment
 from .forms import *
@@ -183,4 +181,9 @@ class AddCommentView(CreateView):
     model= Comment
     form_class=CommentForm
     template_name='add_comment.html'
+    
+    def form_valid(self, form):
+        form.instance.post_id = self.kwargs['pk']
+        return super().form_valid(form)
     success_url = reverse_lazy('home')
+
