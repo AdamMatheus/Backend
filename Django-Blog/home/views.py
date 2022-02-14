@@ -1,11 +1,12 @@
 from tkinter import E
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.urls import reverse_lazy,reverse
 from home.forms import BlogForm
 from .models import BlogModel,Like, Comment
 from .forms import *
 from django.contrib.auth import logout
 from django.views.generic import CreateView
+from django.http import HttpResponseRedirect
 
 
 def post_view(request):
@@ -17,32 +18,19 @@ def post_view(request):
         'user':user,
     }
     
-    return render(request,'home/home.html',context)
+    return render(request,'home/home.html',context) 
 
-def like_post(request):
-    user=request.user
-    if request.method=='POST':
-        post_id=request.POST.get('post_id')
-        post_blog= BlogModel.objects.get(id=post_id)
-        
-        if user in post_blog.liked.all():
-            post_blog.liked.remove(user)
-        else:
-            post_blog.liked.add(user)
-            
-        like,created=Like.objects.get_or_create(user=user,post_id=post_id)
-        
-        if not created:
-            if like.value=='Like':
-                like.value='Unlike'
-            else:
-                like.value='Like'
-        
-        like.save()
-        
-            
-    return redirect('post-list')
-
+def LikeView(request, pk):
+	blog = get_object_or_404(BlogModel, id=request.POST.get('blog_id'))
+	liked = False
+	if blog.likes.filter(id=request.user.id).exists():
+		blog.likes.remove(request.user)
+		liked = False
+	else:
+		blog.likes.add(request.user)
+		liked = True
+	
+	return HttpResponseRedirect(reverse('article-detail', args=[str(pk)]))
 
 
 def logout_view(request):

@@ -22,7 +22,7 @@ class BlogModel(models.Model):
     image=models.ImageField(upload_to='blog')
     created_at=models.DateTimeField(auto_now_add=True)
     upload_to=models.DateTimeField(auto_now=True)
-    liked= models.ManyToManyField(User, default=None, blank=True ,related_name='liked')
+    liked= models.ManyToManyField(User, default=None, blank=True ,related_name='blog_posts')
    
     
     
@@ -33,20 +33,16 @@ class BlogModel(models.Model):
         self.slug=generate_slug(self.title)
         super(BlogModel, self).save(*args, **kwargs)
         
-    @property
-    def num_likes(self):
-        return self.liked.all().count()
     
-LIKE_CHOICES=(
-    ('Like','Like'),
-    ('Unlike','Unlike'),
-)
+    def total_likes(self):
+        return self.likes.count()
+    
+
 
 class Like(models.Model):
     user=models.ForeignKey(User,blank=True, null=True, on_delete=models.CASCADE)
     post=models.ForeignKey(BlogModel, on_delete=models.CASCADE)
-    value=models.CharField(choices=LIKE_CHOICES, default='Like' ,max_length=10)
- 
+   
 
 
 class Comment(models.Model):
