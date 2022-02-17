@@ -293,6 +293,15 @@
                 </button>
               </div>
             </form>
+            <br>
+
+            <form action="" method='post'>
+              {% csrf_token %}
+              {{form.as_p}}
+              <button>Send</button>
+            </form>
+
+
           </div>
         </div>
       </div>
