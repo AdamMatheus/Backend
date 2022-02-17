@@ -1,13 +1,8 @@
 {% extends 'base.html' %}
-
 {% load static %}
-
 {% block content %}
-  
 
-  
-
-
+<div class="hero_area">
     <!-- end header section -->
     <!-- slider section -->
     <section class=" slider_section position-relative">
@@ -34,7 +29,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="img-box">
-                    <img src='{% static "images/slider-img.png" %}' alt="">
+                    <img src= "{% static 'images/slider-img.png' %}" alt="">
                   </div>
                 </div>
               </div>
@@ -61,7 +56,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="img-box">
-                    <img src='{% static "images/slider-img.png" %}' alt="">
+                    <img src="{% static 'images/slider-img.png' %}" alt="">
                   </div>
                 </div>
               </div>
@@ -88,7 +83,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="img-box">
-                    <img src='{% static "images/slider-img.png" %}' alt="">
+                    <img src="{% static 'images/slider-img.png' %}" alt="">
                   </div>
                 </div>
               </div>
@@ -119,7 +114,7 @@
           </h2>
         </div>
         <div class="img-box">
-          <img src='{% static "images/about-img.png" %}' alt="">
+          <img src= "{% static 'images/about-img.png' %}" alt="">
         </div>
         <div class="row">
           <div class="col-md-10 mx-auto">
@@ -129,7 +124,7 @@
           </div>
         </div>
         <div class="btn-box">
-          <a href="">
+          <a href="{% url 'about' %}">
             Read More
           </a>
         </div>
@@ -151,7 +146,7 @@
           <div class="col-md-3 col-sm-6">
             <div class="box">
               <div class="img-box">
-                <img class="" src='{% static "images/teacher-1.jpg" alt="Card image cap" %}'>
+                <img class="" src="{% static 'images/teacher-1.jpg' %}" alt="Card image cap">
               </div>
               <div class="detail-box">
                 <p>
@@ -161,53 +156,11 @@
                 </p>
               </div>
             </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="box">
-              <div class="img-box">
-                <img class="" src='{% static "images/teacher-2.jpg" %}' alt="Card image cap">
-              </div>
-              <div class="detail-box">
-                <p>
-                  <h5>
-                    David Mark
-                  </h5>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="box">
-              <div class="img-box">
-                <img class="" src='{% static "images/teacher-3.jpg" %}' alt="Card image cap">
-              </div>
-              <div class="detail-box">
-                <p>
-                  <h5>
-                    Leena Smith
-                  </h5>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-3 col-sm-6">
-            <div class="box">
-              <div class="img-box">
-                <img class="" src='{% static "images/teacher-4.jpg" %}' alt="Card image cap">
-              </div>
-              <div class="detail-box">
-                <p>
-                  <h5>
-                    Jack Doe
-                  </h5>
-                </p>
-              </div>
-            </div>
-          </div>
+       
         </div>
       </div>
       <div class="btn-box">
-        <a href="">
+        <a href="{% url 'teacher' %}">
           See More
         </a>
       </div>
@@ -218,7 +171,7 @@
 
 
   <!-- client section -->
-
+</div>
   <section class="client_section layout_padding">
     <div class="container">
       <div class="heading_container">
@@ -233,7 +186,7 @@
               <div class="img_container">
                 <div class="img-box">
                   <div class="img_box-inner">
-                    <img src='{% static "images/client.png" %}' alt="">
+                    <img src= "{% static 'images/client.png' %}" alt="">
                   </div>
                 </div>
               </div>
@@ -255,7 +208,7 @@
               <div class="img_container">
                 <div class="img-box">
                   <div class="img_box-inner">
-                    <img src='{% static "images/client.png" %}' alt="">
+                    <img src="{% static 'images/client.png' %}" alt="">
                   </div>
                 </div>
               </div>
@@ -277,7 +230,7 @@
               <div class="img_container">
                 <div class="img-box">
                   <div class="img_box-inner">
-                    <img src='{% static "images/client.png" %}' alt="">
+                    <img src="{% static 'images/client.png' %}" alt="">
                   </div>
                 </div>
               </div>
@@ -308,7 +261,48 @@
     </div>
   </section>
 
+  <div class="footer_bg">
+
+    <!-- contact section -->
+
+    <section class="contact_section ">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-7 mx-auto">
+            <div class="heading_container">
+              <h2 class="">
+                Get In Touch
+              </h2>
+            </div>
+            <form action="">
+              <div>
+                <input type="text" placeholder="Name" />
+              </div>
+              <div>
+                <input type="text" placeholder="Pone Number" />
+              </div>
+              <div>
+                <input type="email" placeholder="Email" />
+              </div>
+              <div>
+                <input type="text" class="message-box" placeholder="Message" />
+              </div>
+              <div class="d-flex  mt-4 ">
+                <button>
+                  SEND
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- end contact section -->
+
+
+
 
   <!-- end client section -->
+
 {% endblock content %}
-  
