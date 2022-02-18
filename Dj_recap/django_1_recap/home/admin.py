@@ -1,11 +1,17 @@
-from django.contrib import admin
+from django import forms
 from .models import Contact
 
-# Register your models here.
-class ContactAdmin(admin.ModelAdmin):
-    list_display = ["name", "phone_number", "email", "message"]
-    list_filter = ("name",)
-    search_fields = ("name__startswith",)
-
-
-admin.site.register(Contact, ContactAdmin)
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = "__all__"
+        widgets = {
+            "name": forms.TextInput(attrs={'placeholder':'Name'}),
+            "phone_number": forms.TextInput(attrs={'placeholder':'Phone_number'}),
+            "email": forms.TextInput(attrs={'placeholder':'Email'}),
+            "message": forms.TextInput(attrs={'placeholder':'Message'}),
+        }
+        
+        
+        
+        

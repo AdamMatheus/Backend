@@ -1,48 +1,59 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
+    <!-- end header section -->
 
-
-  <section class="about_section layout_padding">
+  <!-- teacher section -->
+  <section class="teacher_section ">
     <div class="container">
-      <div class="box">
-        <div class="heading_container">
-          <h2>
-            <span>About Our School</span>
-          </h2>
-        </div>
-        <div class="img-box">
-          <img src= "{% static 'images/about-img.png' %}" alt="">
-        </div>
+      <div class="heading_container">
+        <h2 class="">
+          Our Teachers
+        </h2>
+      </div>
+
+
+
+      <div class="teacher_container layout_padding2">
         <div class="row">
-          <div class="col-md-10 mx-auto">
-            <p>
-              It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-            </p>
+
+          {% for teacher in teachers  %}
+          <div class="col-md-3 col-sm-6">
+            <div class="box">
+              <div class="img-box">
+                <img class="" src="{{teacher.image.url}}"  alt="Card image cap">
+              </div>
+              <div class="detail-box">
+                <p>
+                  <h4>
+                    {{teacher.first_name}} {{teacher.last_name}}
+                  </h4>
+                  <h5>
+                    {{teacher.branch}} - {{teacher.email_teacher}}
+                  </h5>
+      
+                </p>
+              </div>
+            </div>
           </div>
+          {% endfor %}
+
+
         </div>
-        <div class="btn-box">
-          <a href="">
-            Read More
-          </a>
-        </div>
+      </div>
+
+
+
+
+      <div class="btn-box">
+        <a href="">
+          See More
+        </a>
       </div>
     </div>
   </section>
-  <!-- end about section -->
-
   <div class="footer_bg">
+  <!-- teacher section -->
 
-    <!-- contact section -->
 
-
-    <!-- end contact section -->
-
-    <!-- info section -->
-
-    <!-- end info_section -->
-
-    <!-- footer section -->
-    <div class="footer_bg">
-  {% endblock content %}
+{% endblock %}
