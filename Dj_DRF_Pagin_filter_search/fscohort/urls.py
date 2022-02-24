@@ -5,7 +5,6 @@ urlpatterns = [
     
     path("", StudentListCreateAPIView.as_view(), name="list"),
     path("list_api/<int:id>", StudentDetailAPIView.as_view(), name="detail"),
-    path("course_api/", CourseListCreateAPIView.as_view(), name="courses"),
+    path("courses/", CourseListCreateAPIView.as_view(), name="courses"),
     
 ]
-
