@@ -20,6 +20,8 @@ schema_view = get_schema_view(
 
 
 urlpatterns = [
+    
+    #setup
     path("admin/", admin.site.urls),
     path(
         "swagger(<format>\.json|\.yaml)",
@@ -35,7 +37,5 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     
     #apps urls
-    
-    path ("users/",include("users.urls")),
-    
+    path("users/", include("users.urls")),
 ]
